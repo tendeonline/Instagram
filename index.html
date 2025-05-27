@@ -36,7 +36,7 @@
       margin: 0 auto 30px auto;
       width: 70px;
       height: 70px;
-      filter: drop-shadow(0 0 2px #feda75);
+      filter: drop-shadow(0 0 2px #fdf497);
     }
 
     input {
@@ -153,21 +153,20 @@
       <div class="logo" aria-label="Logo estilo Instagram">
         <svg width="70" height="70" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
           <defs>
-            <linearGradient id="instagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#feda75"/>
-              <stop offset="25%" stop-color="#fa7e1e"/>
-              <stop offset="50%" stop-color="#d62976"/>
-              <stop offset="75%" stop-color="#962fbf"/>
-              <stop offset="100%" stop-color="#4f5bd5"/>
-            </linearGradient>
-            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" >
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+            <radialGradient id="grad1" cx="50%" cy="50%" r="70%">
+              <stop offset="0%" stop-color="#fdf497"/>
+              <stop offset="40%" stop-color="#fd5949"/>
+              <stop offset="70%" stop-color="#d6249f"/>
+              <stop offset="100%" stop-color="#285AEB"/>
+            </radialGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
             </filter>
           </defs>
-          <rect x="64" y="64" width="384" height="384" rx="96" ry="96" fill="url(#instagramGradient)" filter="url(#shadow)" />
-          <circle cx="256" cy="256" r="128" fill="white" />
-          <circle cx="256" cy="256" r="96" fill="none" stroke="url(#instagramGradient)" stroke-width="32" />
-          <circle cx="368" cy="144" r="32" fill="url(#instagramGradient)" />
+          <rect x="48" y="48" width="416" height="416" rx="128" ry="128" fill="url(#grad1)" filter="url(#shadow)"/>
+          <circle cx="256" cy="256" r="144" fill="white"/>
+          <circle cx="256" cy="256" r="108" fill="none" stroke="url(#grad1)" stroke-width="32"/>
+          <circle cx="372" cy="140" r="32" fill="url(#grad1)"/>
         </svg>
       </div>
 
